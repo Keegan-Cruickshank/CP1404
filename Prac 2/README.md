@@ -6,7 +6,7 @@ Working through the fundimental principles behind strings, files and exceptions 
 
 ## Strings with ' or "
 
-I have chosen to prefer the **"** tag when enclosing a string. I simply think it flows better in my case. Im unsure if that thought will persist in the harder scenarios but i would prefer not to have to escape every **"** character within my string everytime.
+I have chosen to prefer the **"** tag when enclosing a string. I simply think it flows better in my case. Im unsure if that thought will persist in the harder scenarios but i would prefer not to have to escape every **'** character within my string everytime.
 
 ## Strict vs Javascript
 
