@@ -39,10 +39,13 @@ def show_menu(books):
 def select_menu_item(menu_item, books):
     if menu_item == "L":
         list_all_books(books)
+        show_menu(books)
     elif menu_item == "A":
         add_new_book(books)
+        show_menu(books)
     elif menu_item == "M":
         mark_book_as_complete(books)
+        show_menu(books)
     else:
         quit_application(books)
 
@@ -64,8 +67,10 @@ def list_all_books(books):
         else:
             print("*{}. {name:<{name_space}}by {author:<{author_space}}{pages:>4} pages".format(i + 1, name_space=book_name_char_required, author_space = book_author_char_required, name=book[0], author=book[1], pages=book[2]))
     print("{} books.".format(len(books)))
-    print("You need to read {} pages in {} books".format(get_unread_pages(books), get_unread_books(books)))
-    show_menu(books)
+    if all_books_are_completed(books):
+        print("No books left to read. Why not add a new book?")
+    else:
+        print("You need to read {} pages in {} books".format(get_unread_pages(books), get_unread_books(books)))
 
 
 def get_unread_pages(books):
@@ -111,12 +116,51 @@ def is_completed(book):
 
 def add_new_book(books):
     print("Adding Book")
-    show_menu(books)
 
 
 def mark_book_as_complete(books):
-    print("Mark Book Complete")
-    show_menu(books)
+    if not all_books_are_completed(books):
+        list_all_books(books)
+        user_input = get_book_to_mark_as_complete(books)
+        book_index = user_input - 1
+        if books[book_index][3] == "c":
+            print("That book is already completed")
+        else:
+            books[book_index][3] = "c"
+            output_file = open(FILE_NAME, "w")
+            for book in books:
+                output_file.write("{},{},{},{}\n".format(book[0], book[1], book[2], book[3]))
+            print("{} by {} completed!".format(books[book_index][0], books[book_index][1]))
+    else:
+        print("No required books")
+
+def all_books_are_completed(books):
+    all_books_completed = True
+    for book in books:
+        if book[3] == "r":
+            all_books_completed = False
+    return all_books_completed
+
+
+def get_book_to_mark_as_complete(books) -> int:
+    print("Enter the number of a book to mark as completed")
+    user_input = input(">>>")
+    valid_input = False
+    while not valid_input:
+        try:
+            selection_number = int(user_input)
+            if selection_number <= 0:
+                print("Number must be > 0")
+                user_input = input(">>>")
+            elif selection_number > len(books):
+                print("Invalid book number")
+                user_input = input(">>>")
+            else:
+                valid_input = True
+        except ValueError:
+            print("Invalid input; enter a valid number")
+            user_input = input(">>>")
+    return int(user_input)
 
 
 def quit_application(books):
