@@ -12,7 +12,7 @@ a 50% chance that it decreases by 0 to 5%.
 
 If the price rises above $1000, or falls below $0.01, the program should end.
 
-The price should be displayed to the nearest cent (e.g. $33.59, not $33.5918232901)
+The price should be displayed to the nearest cent (e.g. $33.59, not $33.5918)
 
 """
 
@@ -65,7 +65,9 @@ while price >= MIN_PRICE and price <= MAX_PRICE:
 
     price *= (1 + price_change)
 
-    print("On day {} price is: ${:,.2f}".format(day_counter, price), file=out_file)
+    price_str = "On day {} price is: ${:,.2f}"
+    
+    print(price_str.format(day_counter, price), file=out_file)
 
     day_counter += 1
 
