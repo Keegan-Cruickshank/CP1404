@@ -156,7 +156,7 @@ def add_new_book(books):
     output_file = open(FILE_NAME, 'w')
     for book in books:
         output_file.write("{},{},{},{}\n".format(book[0], book[1], book[2], book[3]))
-    print("{} by {}, ({} pages) added to Reading Tracker".format(book[0], book[1], book[2]))
+    print("{} by {}, ({} pages) added to Reading Tracker".format(new_book_object[0], new_book_object[1], new_book_object[2]))
 
 
 # Returns True if the number passed is a positive integer
