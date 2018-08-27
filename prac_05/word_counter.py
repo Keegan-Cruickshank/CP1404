@@ -1,3 +1,8 @@
+"""
+Simple application to display the frequency of all words from a users input.
+"""
+
+
 text_input = input("Text: ")
 word_count_dict = {}
 word_list = text_input.split(" ")
