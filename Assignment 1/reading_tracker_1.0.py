@@ -33,7 +33,7 @@ def show_menu(books):
         select_menu_item(user_menu_input.upper(), books)
     else:
         print("Invalid menu choice")
-        show_menu()
+        show_menu(books)
 
 
 def select_menu_item(menu_item, books):
@@ -115,7 +115,39 @@ def is_completed(book):
 
 
 def add_new_book(books):
-    print("Adding Book")
+    book_title = input("Title: ")
+    while book_title.strip() == "":
+        print("Input can not be blank")
+        book_title = input("Title: ")
+    book_author = input("Author: ")
+    while book_author.strip() == "":
+        print("Input can not be blank")
+        book_author = input("Author: ")
+    book_pages = input("Pages: ")
+    while not valid_positive_int(book_pages)[0]:
+        print(valid_positive_int(book_pages)[1])
+        book_pages = input("Pages: ")
+    new_book_object = [book_title, book_author, book_pages, "r"]
+    books.append(new_book_object)
+    output_file = open(FILE_NAME, 'w')
+    for book in books:
+        output_file.write("{},{},{},{}\n".format(book[0], book[1], book[2], book[3]))
+    print("{} by {}, ({} pages) added to Reading Tracker".format(book[0], book[1], book[2]))
+
+
+def valid_positive_int(potential_number):
+    response = []
+    try:
+        number = int(potential_number)
+        if number > 0:
+            response.append(True)
+        else:
+            response.append(False)
+            response.append("Number must be > 0")
+    except ValueError:
+        response.append(False)
+        response.append("Invalid input; enter a valid number")
+    return response
 
 
 def mark_book_as_complete(books):
@@ -133,6 +165,7 @@ def mark_book_as_complete(books):
             print("{} by {} completed!".format(books[book_index][0], books[book_index][1]))
     else:
         print("No required books")
+
 
 def all_books_are_completed(books):
     all_books_completed = True
