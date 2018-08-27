@@ -8,6 +8,7 @@ Book reading tracker that keeps track of the books you want to read and the ones
 FILE_NAME = "books.csv"
 
 
+# Main application, Reads lines and stores to list before displaying menu
 def main():
     input_file = open(FILE_NAME, "r")
     books = input_file.readlines()
@@ -22,6 +23,8 @@ def main():
     show_menu(formatted_books)
 
 
+# Shows menu items and asks for user selection
+# Arguments(Book List)
 def show_menu(books):
     print("Menu:")
     print("L - List all books")
@@ -36,6 +39,19 @@ def show_menu(books):
         show_menu(books)
 
 
+# Returns True if menu item exists
+# Arguments(User Menu Selection)
+def selection_is_valid(user_menu_input) -> bool:
+    uppercase_menu_input = user_menu_input.upper()
+    if uppercase_menu_input in ["L", "A", "M", "Q"]:
+        return True
+    else:
+        return False
+
+
+# Directs users to the correct feature
+# Additional - Re-Displays menu once feature has been completed
+# Arguments(User Menu Selection, Book List)
 def select_menu_item(menu_item, books):
     if menu_item == "L":
         list_all_books(books)
@@ -50,22 +66,16 @@ def select_menu_item(menu_item, books):
         quit_application(books)
 
 
-def selection_is_valid(user_menu_input) -> bool:
-    uppercase_menu_input = user_menu_input.upper()
-    if uppercase_menu_input in ["L", "A", "M", "Q"]:
-        return True
-    else:
-        return False
-
-
+# Lists Books in a readable manner
+# Arguments (Book List)
 def list_all_books(books):
     book_name_char_required = get_max_name_length(books) + 1
     book_author_char_required = get_max_author_length(books) + 1
     for i, book in enumerate(books):
         if is_completed(book):
-            print(" {}. {name:<{name_space}}by {author:<{author_space}}{pages:>4} pages".format(i + 1, name_space=book_name_char_required, author_space = book_author_char_required, name=book[0], author=book[1], pages=book[2]))
+            print(" {}. {name:<{name_space}}by {author:<{author_space}}{pages:>4} pages".format(i + 1, name_space=book_name_char_required, author_space=book_author_char_required, name=book[0], author=book[1], pages=book[2]))
         else:
-            print("*{}. {name:<{name_space}}by {author:<{author_space}}{pages:>4} pages".format(i + 1, name_space=book_name_char_required, author_space = book_author_char_required, name=book[0], author=book[1], pages=book[2]))
+            print("*{}. {name:<{name_space}}by {author:<{author_space}}{pages:>4} pages".format(i + 1, name_space=book_name_char_required, author_space=book_author_char_required, name=book[0], author=book[1], pages=book[2]))
     print("{} books.".format(len(books)))
     if all_books_are_completed(books):
         print("No books left to read. Why not add a new book?")
@@ -73,6 +83,8 @@ def list_all_books(books):
         print("You need to read {} pages in {} books".format(get_unread_pages(books), get_unread_books(books)))
 
 
+# Returns number of unread pages in all books
+# Arguments (Book List)
 def get_unread_pages(books):
     unread_pages = 0
     for book in books:
@@ -81,6 +93,8 @@ def get_unread_pages(books):
     return unread_pages
 
 
+# Returns number of unread books
+# Arguments (Book List)
 def get_unread_books(books):
     unread_books = 0
     for book in books:
@@ -89,6 +103,8 @@ def get_unread_books(books):
     return unread_books
 
 
+# Returns the length of the longest book title
+# Arguments (Book List)
 def get_max_name_length(books):
     current_max_length_name = 0
     for book in books:
@@ -98,6 +114,8 @@ def get_max_name_length(books):
     return current_max_length_name
 
 
+#  Returns the length of the longest Author Name
+#  Arguments (Book List)
 def get_max_author_length(books):
     current_max_length_author = 0
     for book in books:
@@ -107,6 +125,8 @@ def get_max_author_length(books):
     return current_max_length_author
 
 
+# Returns True if the book has been read
+# Arguments (Book List)
 def is_completed(book):
     if book[3] == 'r':
         return False
@@ -114,6 +134,8 @@ def is_completed(book):
         return True
 
 
+# Walks the user through adding a new book to the output file
+# Arguments (Book List)
 def add_new_book(books):
     book_title = input("Title: ")
     while book_title.strip() == "":
@@ -135,6 +157,8 @@ def add_new_book(books):
     print("{} by {}, ({} pages) added to Reading Tracker".format(book[0], book[1], book[2]))
 
 
+# Returns True if the number passed is a positive integer
+# Arguments (Number to check)
 def valid_positive_int(potential_number):
     response = []
     try:
@@ -150,6 +174,8 @@ def valid_positive_int(potential_number):
     return response
 
 
+# Asks user for a book they want marked as completed and applies changes to output file
+# Arguments (Book List)
 def mark_book_as_complete(books):
     if not all_books_are_completed(books):
         list_all_books(books)
@@ -167,6 +193,8 @@ def mark_book_as_complete(books):
         print("No required books")
 
 
+# Returns True if all books have been marked Completed
+# Arguments (Book List)
 def all_books_are_completed(books):
     all_books_completed = True
     for book in books:
@@ -175,6 +203,8 @@ def all_books_are_completed(books):
     return all_books_completed
 
 
+# Safe method of getting a book from the list, Returns Valid Book ID
+# Arguments (Book List)
 def get_book_to_mark_as_complete(books) -> int:
     print("Enter the number of a book to mark as completed")
     user_input = input(">>>")
@@ -196,6 +226,8 @@ def get_book_to_mark_as_complete(books) -> int:
     return int(user_input)
 
 
+# Quits Application and states how many books are in the file
+# Arguments (Book List)
 def quit_application(books):
     print("{} books have been saved to {}".format(len(books), FILE_NAME))
     print("Have a nice day :)")
