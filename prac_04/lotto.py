@@ -1,4 +1,7 @@
-""" Application that generates random lottery numbers given how many 'Quick Picks' are wanted"""
+"""
+Application that generates random lottery numbers given
+how many 'Quick Picks' are wanted
+"""
 from random import randint
 
 

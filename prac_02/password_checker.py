@@ -26,8 +26,9 @@ while not valid_password:
     if MIN_PASSWORD_LENGTH < len(user_password_attempt) < MAX_PASSWORD_LENGTH:
         """
         If the quantity of each characters in the password needed
-        to be greater then one, I would just change below to counters and add one if they are found.
-        For now, I find reading the Booleans easier.
+        to be greater then one, I would just change below to counters 
+        and add one if they are found. For now, I find reading the 
+        Booleans easier.
         """
         has_uppercase = False
         has_lowercase = False

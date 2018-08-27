@@ -1,7 +1,8 @@
 """
 Keegan Cruickshank
 CP1404
-Book reading tracker that keeps track of the books you want to read and the ones you already have.
+Book reading tracker that keeps track of the books you
+want to read and the ones you already have.
 
 """
 
@@ -78,13 +79,15 @@ def list_all_books(books):
         else:
             print("*", end="")
         print(
-            "{}. {name:<{name_space}}by {author:<{author_space}}{pages:>4} pages".format(
+            "{}. {name:<{name_space}}by {author:<{author_space}}{pages:>4} pages"
+            .format(
                 i + 1,
                 name_space=book_name_char_required,
                 author_space=book_author_char_required,
                 name=book[0],
                 author=book[1],
-                pages=book[2]))
+                pages=book[2])
+        )
     print("{} books.".format(len(books)))
     if all_books_are_completed(books):
         print("No books left to read. Why not add a new book?")
@@ -190,7 +193,8 @@ def valid_positive_int(potential_number):
     return response
 
 
-# Asks user for a book they want marked as completed and applies changes to output file
+# Asks user for a book they want marked as completed
+# and applies changes to output file
 # Arguments (Book List)
 def mark_book_as_complete(books):
     if not all_books_are_completed(books):

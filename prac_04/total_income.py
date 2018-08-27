@@ -23,7 +23,9 @@ def calculate_project_report(incomes, number_of_months):
         income = incomes[month - 1]
         total += income
         print(
-            "Month {:2} - Income: ${:10.2f} Total: ${:10.2f}".format(month, income, total))
+            "Month {:2} - Income: ${:10.2f} Total: ${:10.2f}"
+            .format(month, income, total)
+        )
 
 
 main()
