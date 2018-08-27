@@ -3,6 +3,10 @@ CP1404/CP5632 Practical
 Color names in a dictionary
 """
 
+
+
+
+
 COLOR_TO_HEX_DICT = {
     "ANTIQUEWHITE": "#faebd7",
     "AQUAMARINE1": "#7fffd4",
@@ -12,6 +16,10 @@ COLOR_TO_HEX_DICT = {
     "DEEPPINK1": "#ff1493",
     "GOLD1": "#ffd700"
 }
+
+
+
+
 
 color = input("Enter color name: ")
 while color != "":
