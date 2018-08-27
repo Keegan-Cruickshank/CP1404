@@ -79,11 +79,11 @@ def list_all_books(books):
         else:
             print("*", end="")
         print(
-            "{}. {name:<{name_space}}by {author:<{author_space}}{pages:>4} pages"
+            "{}. {name:<{n_space}}by {author:<{a_space}}{pages:>4} pages"
             .format(
                 i + 1,
-                name_space=book_name_char_required,
-                author_space=book_author_char_required,
+                n_space=book_name_char_required,
+                a_space=book_author_char_required,
                 name=book[0],
                 author=book[1],
                 pages=book[2])
