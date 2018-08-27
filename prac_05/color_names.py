@@ -4,9 +4,6 @@ Color names in a dictionary
 """
 
 
-
-
-
 COLOR_TO_HEX_DICT = {
     "ANTIQUEWHITE": "#faebd7",
     "AQUAMARINE1": "#7fffd4",
@@ -18,13 +15,11 @@ COLOR_TO_HEX_DICT = {
 }
 
 
-
-
-
 color = input("Enter color name: ")
 while color != "":
     if color.upper() in COLOR_TO_HEX_DICT:
-        print(color.upper(), "has the hex code:", COLOR_TO_HEX_DICT[color.upper()])
+        print(color.upper(), "has the hex code:",
+              COLOR_TO_HEX_DICT[color.upper()])
     else:
         print("Invalid Color Name")
     color = input("Enter color name: ")

@@ -77,12 +77,20 @@ def list_all_books(books):
             print(" ", end="")
         else:
             print("*", end="")
-        print("{}. {name:<{name_space}}by {author:<{author_space}}{pages:>4} pages".format(i + 1, name_space=book_name_char_required, author_space=book_author_char_required, name=book[0], author=book[1], pages=book[2]))
+        print(
+            "{}. {name:<{name_space}}by {author:<{author_space}}{pages:>4} pages".format(
+                i + 1,
+                name_space=book_name_char_required,
+                author_space=book_author_char_required,
+                name=book[0],
+                author=book[1],
+                pages=book[2]))
     print("{} books.".format(len(books)))
     if all_books_are_completed(books):
         print("No books left to read. Why not add a new book?")
     else:
-        print("You need to read {} pages in {} books".format(get_unread_pages(books), get_unread_books(books)))
+        print("You need to read {} pages in {} books".format(
+            get_unread_pages(books), get_unread_books(books)))
 
 
 # Returns number of unread pages in all books
@@ -155,8 +163,14 @@ def add_new_book(books):
     books.append(new_book_object)
     output_file = open(FILE_NAME, 'w')
     for book in books:
-        output_file.write("{},{},{},{}\n".format(book[0], book[1], book[2], book[3]))
-    print("{} by {}, ({} pages) added to Reading Tracker".format(new_book_object[0], new_book_object[1], new_book_object[2]))
+        output_file.write(
+            "{},{},{},{}\n".format(
+                book[0],
+                book[1],
+                book[2],
+                book[3]))
+    print("{} by {}, ({} pages) added to Reading Tracker".format(
+        new_book_object[0], new_book_object[1], new_book_object[2]))
 
 
 # Returns True if the number passed is a positive integer
@@ -189,8 +203,13 @@ def mark_book_as_complete(books):
             books[book_index][3] = "c"
             output_file = open(FILE_NAME, "w")
             for book in books:
-                output_file.write("{},{},{},{}\n".format(book[0], book[1], book[2], book[3]))
-            print("{} by {} completed!".format(books[book_index][0], books[book_index][1]))
+                output_file.write(
+                    "{},{},{},{}\n".format(
+                        book[0], book[1], book[2], book[3]))
+            print(
+                "{} by {} completed!".format(
+                    books[book_index][0],
+                    books[book_index][1]))
     else:
         print("No required books")
 
