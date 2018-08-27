@@ -72,3 +72,4 @@ while price >= MIN_PRICE and price <= MAX_PRICE:
     day_counter += 1
 
 out_file.close()
+
