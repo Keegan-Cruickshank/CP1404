@@ -5,6 +5,7 @@ Book reading tracker that keeps track of the books you want to read and the ones
 
 """
 
+REVISION = "0.9"
 FILE_NAME = "books.csv"
 
 
@@ -18,7 +19,7 @@ def main():
     for book in books:
         formatted_book = book.strip().split(",")
         formatted_books.append(formatted_book)
-    print("Reading Tracker 1.0 - by Keegan Cruickshank")
+    print("Reading Tracker {} - by Keegan Cruickshank".format(REVISION))
     print("{} books loaded from {}".format(number_of_lines, FILE_NAME))
     show_menu(formatted_books)
 
