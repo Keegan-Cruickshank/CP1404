@@ -24,7 +24,7 @@ def main():
 
 
 # Shows menu items and asks for user selection
-# Arguments(Book List)
+# Arguments (Book List)
 def show_menu(books):
     print("Menu:")
     print("L - List all books")
@@ -40,7 +40,7 @@ def show_menu(books):
 
 
 # Returns True if menu item exists
-# Arguments(User Menu Selection)
+# Arguments (User Menu Selection)
 def selection_is_valid(user_menu_input) -> bool:
     uppercase_menu_input = user_menu_input.upper()
     if uppercase_menu_input in ["L", "A", "M", "Q"]:
@@ -51,7 +51,7 @@ def selection_is_valid(user_menu_input) -> bool:
 
 # Directs users to the correct feature
 # Additional - Re-Displays menu once feature has been completed
-# Arguments(User Menu Selection, Book List)
+# Arguments (User Menu Selection, Book List)
 def select_menu_item(menu_item, books):
     if menu_item == "L":
         list_all_books(books)
