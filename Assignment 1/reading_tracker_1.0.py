@@ -74,9 +74,10 @@ def list_all_books(books):
     book_author_char_required = get_max_author_length(books) + 1
     for i, book in enumerate(books):
         if is_completed(book):
-            print(" {}. {name:<{name_space}}by {author:<{author_space}}{pages:>4} pages".format(i + 1, name_space=book_name_char_required, author_space=book_author_char_required, name=book[0], author=book[1], pages=book[2]))
+            print(" ", end="")
         else:
-            print("*{}. {name:<{name_space}}by {author:<{author_space}}{pages:>4} pages".format(i + 1, name_space=book_name_char_required, author_space=book_author_char_required, name=book[0], author=book[1], pages=book[2]))
+            print("*", end="")
+        print("{}. {name:<{name_space}}by {author:<{author_space}}{pages:>4} pages".format(i + 1, name_space=book_name_char_required, author_space=book_author_char_required, name=book[0], author=book[1], pages=book[2]))
     print("{} books.".format(len(books)))
     if all_books_are_completed(books):
         print("No books left to read. Why not add a new book?")
