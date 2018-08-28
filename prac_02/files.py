@@ -14,4 +14,3 @@ running_total = 0
 for line in numbers_file:
     running_total += int(line)
 print("The running total of the file was: {}".format(running_total))
-

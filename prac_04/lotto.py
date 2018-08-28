@@ -1,5 +1,9 @@
-""" Application that generates random lottery numbers given how many 'Quick Picks' are wanted"""
+"""
+Application that generates random lottery numbers given
+how many 'Quick Picks' are wanted
+"""
 from random import randint
+
 
 def main():
     valid_quickpick_number = False
@@ -22,7 +26,14 @@ def generate_quickpicks(number_of_quickpicks):
         NUMBER_4 = unique_random_number(current_numbers)
         NUMBER_5 = unique_random_number(current_numbers)
         NUMBER_6 = unique_random_number(current_numbers)
-        print("{:>3} {:>3} {:>3} {:>3} {:>3} {:>3}".format(NUMBER_1, NUMBER_2, NUMBER_3, NUMBER_4, NUMBER_5, NUMBER_6))
+        print(
+            "{:>3} {:>3} {:>3} {:>3} {:>3} {:>3}".format(
+                NUMBER_1,
+                NUMBER_2,
+                NUMBER_3,
+                NUMBER_4,
+                NUMBER_5,
+                NUMBER_6))
 
 
 def unique_random_number(current_numbers):

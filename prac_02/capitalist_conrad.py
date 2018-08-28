@@ -64,12 +64,9 @@ while price >= MIN_PRICE and price <= MAX_PRICE:
         price_change = random.uniform(-MAX_DECREASE, 0)
 
     price *= (1 + price_change)
-
     price_str = "On day {} price is: ${:,.2f}"
-    
     print(price_str.format(day_counter, price), file=out_file)
 
     day_counter += 1
 
 out_file.close()
-

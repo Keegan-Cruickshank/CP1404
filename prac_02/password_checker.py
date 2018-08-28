@@ -9,7 +9,10 @@ MAX_PASSWORD_LENGTH = 15
 SPECIAL_CHARS = "!@#$%^&*()_-=+`~,./'[]<>?{}|\\"
 
 print("Please enter a valid password")
-print("Your password must be between {} and {} characters, and contain:".format(MIN_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH))
+print(
+    "Your password must be between {} and {} characters, and contain:".format(
+        MIN_PASSWORD_LENGTH,
+        MAX_PASSWORD_LENGTH))
 print("   1 or more uppercase characters")
 print("   1 or more lowercase characters")
 print("   1 or more numbers")
@@ -23,15 +26,19 @@ while not valid_password:
     if MIN_PASSWORD_LENGTH < len(user_password_attempt) < MAX_PASSWORD_LENGTH:
         """
         If the quantity of each characters in the password needed
-        to be greater then one, I would just change below to counters and add one if they are found.
-        For now, I find reading the Booleans easier.
+        to be greater then one, I would just change below to counters
+        and add one if they are found. For now, I find reading the
+        Booleans easier.
         """
         has_uppercase = False
         has_lowercase = False
         has_number = False
         has_special = False
     else:
-        print("Password must be between {} and {} in length. Try Again.".format(MIN_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH))
+        print(
+            "Password must be between {} and {} in length. Try Again.".format(
+                MIN_PASSWORD_LENGTH,
+                MAX_PASSWORD_LENGTH))
         user_password_attempt = input(">>>")
 
     for char in user_password_attempt:
