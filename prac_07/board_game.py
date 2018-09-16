@@ -23,9 +23,9 @@ class TicTacToeGame:
 
     def is_over(self):
         return self._check_line() \
-               or self._check_line(swapped=True) \
-               or self._check_diagonal() \
-               or self._check_diagonal(swapped=True)
+            or self._check_line(swapped=True) \
+            or self._check_diagonal() \
+            or self._check_diagonal(swapped=True)
 
     def _check_line(self, swapped=False):
         for row in range(3):

@@ -35,7 +35,7 @@ class MoveWithMouse(App):
         # print(self.root_window.mouse_pos)
         # account for the width of the ball
         self.ball.pos = self.root_window.mouse_pos[0] - self.ball.size[0] / 2,\
-                        self.root_window.mouse_pos[1] - self.ball.size[1] / 2
+            self.root_window.mouse_pos[1] - self.ball.size[1] / 2
 
 
 MoveWithMouse().run()
