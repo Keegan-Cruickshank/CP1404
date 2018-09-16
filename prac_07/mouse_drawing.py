@@ -1,7 +1,8 @@
 """
 CP1404 IT@JCU
 Kivy Demo showing drawing an object at the location of the mouse cursor
-Note: there seems to be a Kivy bug with mouse locations on Retina (high DPI) screens
+Note: there seems to be a Kivy bug with mouse
+locations on Retina (high DPI) screens
 https://github.com/kivy/kivy/issues/3960
 """
 
@@ -33,7 +34,8 @@ class MoveWithMouse(App):
     def update(self, seconds):
         # print(self.root_window.mouse_pos)
         # account for the width of the ball
-        self.ball.pos = self.root_window.mouse_pos[0] - self.ball.size[0] / 2, self.root_window.mouse_pos[1] - self.ball.size[1] / 2
+        self.ball.pos = self.root_window.mouse_pos[0] - self.ball.size[0] / 2,\
+                        self.root_window.mouse_pos[1] - self.ball.size[1] / 2
 
 
 MoveWithMouse().run()

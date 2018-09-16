@@ -24,7 +24,11 @@ class PhonebookApp(App):
         """
         super(PhonebookApp, self).__init__(**kwargs)
         # basic data example - dictionary of names: phone numbers
-        self.phonebook = {"Bob Brown": "0414144411", "Cat Cyan": "0441411211", "Oren Ochre": "0432123456"}
+        self.phonebook = {
+            "Bob Brown": "0414144411",
+            "Cat Cyan": "0441411211",
+            "Oren Ochre": "0432123456"
+        }
 
     def build(self):
         """
@@ -56,17 +60,20 @@ class PhonebookApp(App):
         """
         # update status text
         name = instance.text
-        self.status_text = "{}'s number is {}".format(name, self.phonebook[name])
+        self.status_text = "{}'s number is {}"\
+            .format(name, self.phonebook[name])
         # set button state
         # print(instance.state)
         instance.state = 'down'
 
     def press_clear(self):
         """
-        Clear any buttons that have been selected (visually) and reset status text
+        Clear any buttons that have been selected
+        (visually) and reset status text
         :return: None
         """
-        # use the .children attribute to access all widgets that are "in" another widget
+        # use the .children attribute to access all widgets
+        # that are "in" another widget
         for instance in self.root.ids.entries_box.children:
             instance.state = 'normal'
         self.status_text = ""
@@ -82,13 +89,15 @@ class PhonebookApp(App):
 
     def press_save(self, added_name, added_number):
         """
-        Handler for pressing the save button in the add entry popup - save a new entry to memory
+        Handler for pressing the save button in the add
+        entry popup - save a new entry to memory
         :param added_name: name text input (from popup GUI)
         :param added_number: phone number text input (string)
         :return: None
         """
         self.phonebook[added_name] = added_number
-        # change the number of columns based on the number of entries (no more than 5 rows of entries)
+        # change the number of columns based on the number of entries
+        # (no more than 5 rows of entries)
         self.root.ids.entries_box.cols = len(self.phonebook) // 5 + 1
         # add button for new entry (same as in create_entry_buttons())
         temp_button = Button(text=added_name)
@@ -101,7 +110,8 @@ class PhonebookApp(App):
     def clear_fields(self):
         """
         Clear the text input fields from the add entry popup
-        If we don't do this, the popup will still have text in it when opened again
+        If we don't do this, the popup will still have text
+        in it when opened again
         :return: None
         """
         self.root.ids.added_name.text = ""

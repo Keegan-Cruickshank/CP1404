@@ -15,7 +15,8 @@ class BoxLayoutDemo(App):
         """ handle calculation, output result to label widget """
         try:
             result = float(value) * 1.60934
-            self.root.ids.output_value.text = "{:0.2f} kilometers".format(result)
+            self.root.ids.output_value.text = "{:0.2f} kilometers"\
+                .format(result)
         except ValueError:
             self.show_valid_number_error()
 

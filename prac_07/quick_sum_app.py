@@ -53,7 +53,11 @@ class QuickSum(App):
 
     def _toggle_digits(self):
         self._digits_toggled = not self._digits_toggled
-        self._set_digits(QuickSum.MORE_DIGITS if self._digits_toggled else QuickSum.NORMAL_DIGITS)
+        self._set_digits(
+            QuickSum.MORE_DIGITS
+            if self._digits_toggled
+            else QuickSum.NORMAL_DIGITS
+        )
 
     def _set_digits(self, digits):
         for i in range(9):

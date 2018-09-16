@@ -21,14 +21,18 @@ class MilesConverterApp(App):
         return self.root
 
     def handle_calculate(self):
-        """ handle calculation (could be button press or other call), output result to label widget """
+        """
+        handle calculation (could be button press or other call),
+        output result to label widget
+        """
         value = self.get_validated_miles()
         result = value * MILES_TO_KM
         self.root.ids.output_label.text = str(result)
 
     def handle_increment(self, change):
         """
-        handle up/down button press, update the text input with new value, call calculation function
+        handle up/down button press, update the text input with
+        new value, call calculation function
         :param change: the amount to change
         """
         value = self.get_validated_miles() + change
