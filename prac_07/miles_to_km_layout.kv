@@ -1,0 +1,22 @@
+BoxLayout:
+    orientation: 'vertical'
+    BoxLayout:
+        orientation: 'horizontal'
+        TextInput:
+            id: input_value
+            multiline: False
+            text: "0"
+            on_text: app.handle_convert(self.text)
+        BoxLayout:
+            size_hint_x: None
+            width: 200
+            orientation: 'vertical'
+            Button:
+                text: 'Up'
+                on_press: app.handle_increment(1)
+            Button:
+                text: 'Down'
+                on_press: app.handle_increment(-1)
+    Label:
+        id: output_value
+        text: "Please enter a number to convert"
